@@ -1,0 +1,27 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SSAKTHITSELVAN/backend_in_1_moth-express-.git"
+  },
+  "keywords": [
+    "express",
+    "backend",
+    "api"
+  ],
+  "author": "sakthi selvan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SSAKTHITSELVAN/backend_in_1_moth-express-/issues"
+  },
+  "homepage": "https://github.com/SSAKTHITSELVAN/backend_in_1_moth-express-#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
