@@ -1,24 +1,17 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import pool from './config/db.js';
+import express from "express";
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 
+app.use(express.json());
 
-async function startserver(){
-  try{
-    await pool.query("SELECT NOW()");
-    console.log('Database connected!');
-    app.listen(PORT, () => {
-      console.log(`myapp listening on port ${PORT}!`);
-    });
-  }catch(error){
-    console.error('Database connection error:', error);
-  }
-}
+app.use("/api/auth", authRoutes);
 
-startserver();
+app.listen(process.env.PORT, () => {
+  console.log(
+    `Server running on ${process.env.PORT}`
+  );
+});
