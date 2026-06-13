@@ -6,13 +6,17 @@ function generateToken(payload) {
   return jwt.sign(payload, secretKey, { expiresIn: '1h' });
 }
 
-function verifyToken(token) {
+function generateRefreshToken(payload) {
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
+}
+
+function verifyToken(token, secret = secretKey) {
   try {
     console.log('Verifying token:', token);
-    return jwt.verify(token, secretKey);
+    return jwt.verify(token, secret);
   } catch (err) {
     throw new Error('Invalid token');
   }
 }
 
-export { generateToken, verifyToken };
+export { generateToken, verifyToken, generateRefreshToken };

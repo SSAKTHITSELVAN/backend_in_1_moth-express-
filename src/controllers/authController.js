@@ -1,4 +1,5 @@
-import {registerUser, loginUser, getUserDetails} from '../services/authService.js';
+import {registerUser, loginUser, getUserDetails, refreshToken} from '../services/authService.js';
+
 
 async function register(req, res) {
   try{
@@ -28,4 +29,14 @@ async function getUserInfo(req, res) {
   }
 }
 
-export { register, login, getUserInfo };
+async function refresh(req, res) {
+  try{
+    const refreshToken = req.body;
+    const tokens = await refreshToken(refreshToken);
+    res.status(200).json(tokens);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+export { register, login, getUserInfo, refresh};
